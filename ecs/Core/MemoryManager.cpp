@@ -16,6 +16,22 @@ namespace Core
 
 	}
 
+
+	MemoryManager::MemoryManager(const Core::uint64& requestedTotalSizeInBytes, const Core::uint64& growSizeInBytes)
+		:
+		totalSize(0),
+		usedSize(0),
+		growSize(0),
+		currentBlockIndex(0),
+		lastStackIndent(0),
+#ifdef BUILD_DEBUG
+		maxUsedSize(0),
+#endif
+		isInited(false)
+	{
+		ASSERT(init(requestedTotalSizeInBytes, growSizeInBytes));
+	}
+
 	MemoryManager::~MemoryManager()
 	{
 		clear();
@@ -173,7 +189,7 @@ namespace Core
 				if (isThereAvailableSizeInCurrentBlock)
 				{
 
-					Core::uint32 sizeIndex = (usedSize - sizeCounter);
+					Core::uint64 sizeIndex = (usedSize - sizeCounter);
 #ifdef BUILD_DEBUG
 					std::cout << "ALLOCATION" << "(" << tempBlockIndex << "," << sizeIndex << ")" << std::endl;
 #endif

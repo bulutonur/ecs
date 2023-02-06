@@ -8,7 +8,6 @@ file(GLOB SRC
      "**/*.cpp"
 )
 
-
 project (ecslib)
 
 # Add source to this project's executable.

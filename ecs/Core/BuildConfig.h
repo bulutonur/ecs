@@ -94,7 +94,7 @@ information included.This build is used when testing brand new
 codeand also to debug all but the most trivial problems that arise during
 development.
 */
-#define BUILD_DEBUG
+//#define BUILD_DEBUG
 
 /*
 A development build(or "dev build") is a faster version
@@ -103,7 +103,7 @@ debugging informationand assertions still turned on. This allows you to see your
 at a speed representative of the final product, but it still gives you some
 opportunity to debug problems.
 */
-//#define BUILD_DEVELOPMENT
+#define BUILD_DEVELOPMENT
 
 /*
 A ship configuration is intended for building the final game that

@@ -44,6 +44,7 @@ namespace Core
 
 	public:
 
+		MemoryManager(const Core::uint64& requestedTotalSizeInBytes, const Core::uint64& growSizeInBytes);
 		MemoryManager();
 
 		~MemoryManager();

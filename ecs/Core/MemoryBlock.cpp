@@ -50,7 +50,7 @@ namespace Core
 		clean();
 
 
-		Core::uint32 allocateSize = requestedTotalSizeInBytes;
+		Core::uint64 allocateSize = requestedTotalSizeInBytes;
 		bool isHigherThanOSLimit = allocateSize > MAX_ALLOCATE_SIZE;
 		if (isHigherThanOSLimit)
 		{
