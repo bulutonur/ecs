@@ -67,6 +67,32 @@ function check_branchname
 
 }
 
+# Scan source files with https://github.com/Tencent/TscanCode
+function tscan_files
+{
+	# find does not work in Windows. So i used du
+	source_files=$(du -a . | grep ".*\.\(h\|cpp\|hpp\|hh\|cc\|cxx\|c\)$" | awk "{print $2}")
+
+	# Remove previous scan
+	rm -f scan.xml
+
+	for source_file in $source_files
+	do
+		.git/hooks/tscancode --xml $source_file 2>>scan.xml
+	done
+	
+	if grep -q "error" "scan.xml"
+	then
+		echo "Error in source files. Check scan.xml"
+		exit 1
+	else
+		# Remove the successful output scan
+		rm -f scan.xml
+	fi
+
+}
+
 check_filenames
 check_mainbranch
 check_branchname
+tscan_files
