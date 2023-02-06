@@ -3,15 +3,18 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
+
+project(test)
+include_directories("../ecs")
+
+
 file(GLOB SRC
-     "**/*.h"
-     "**/*.cpp"
+     "*.h"
+     "*.cpp"
 )
 
 
-project (ecslib)
-
 # Add source to this project's executable.
-add_library (ecslib STATIC ${SRC})
+add_executable (test ${SRC})
+target_link_libraries(test ecslib)
 
-# TODO: Add tests and install targets if needed.

@@ -7,3 +7,4 @@ project ("ecs")
 
 # Include sub-projects.
 add_subdirectory ("ecs")
+add_subdirectory ("test")
